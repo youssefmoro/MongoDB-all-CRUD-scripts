@@ -1,0 +1,51 @@
+yousefLearning> db.inventory.find().sort({qty:-1})
+[
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  },
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 25,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  }
+]
+yousefLearning> db.inventory.find().sort({item:-1})
+[
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 25,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  }
+]
+yousefLearning>

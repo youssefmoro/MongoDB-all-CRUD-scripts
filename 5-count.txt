@@ -1,0 +1,42 @@
+yousefLearning> db.inventory.find()
+[
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 25,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.count({id:{$exists:true}})
+DeprecationWarning: Collection.count() is deprecated. Use countDocuments or estimatedDocumentCount.
+1
+yousefLearning> db.inventory.count({item:{$exists:true}})
+3
+yousefLearning> db.inventory.find({item:{$exists:true}}).count()
+3
+yousefLearning> db.inventory.count(qty:{$gte:25})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:22)
+
+> 1 | db.inventory.count(qty:{$gte:25})
+    |                       ^
+  2 |
+
+yousefLearning> db.inventory.count({qty:{$gte:25}})
+3

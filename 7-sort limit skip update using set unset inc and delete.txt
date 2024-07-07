@@ -1,0 +1,211 @@
+yousefLearning> db.inventory.find({qty:{$gt:50,$lte:25}})
+
+yousefLearning> db.inventory.find().sort({qty:-1})
+[
+
+yousefLearning> db.inventory.distinct("qty")
+[ 25, 75, 85 ]
+yousefLearning> db.inventory.find().limit(2).skip(1)
+[
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.find({item:/at/})
+[
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  }
+]
+yousefLearning> db.inventory.find({item:{$regex:/^plan/}})
+[
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.people.updateMany({status:0},{$inc:{qty:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+yousefLearning> db.people.updateMany({status:"A"},{$inc:{qty:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+yousefLearning> db.people.find
+[Function: find] AsyncFunction {
+  returnsPromise: true,
+  apiVersions: [ 1, Infinity ],
+  returnType: 'Cursor',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+yousefLearning> db.people.find()
+
+yousefLearning> db.people.find({})
+
+yousefLearning> db.inventory.updateMany({status:"A"},{$inc:{qty:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+yousefLearning> db.inventory.updateMany({status:0},{$inc:{qty:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+yousefLearning> db.inventory.updateMany({status:"0"},{$inc:{qty:3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+yousefLearning> db.inventory.find()
+[
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 28,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 88,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 78,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.updateMany({},{$set:{join_date:new Date()}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+yousefLearning> db.inventory.find()
+[
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 28,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A',
+    join_date: ISODate('2024-07-07T01:16:19.639Z')
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 88,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A',
+    join_date: ISODate('2024-07-07T01:16:19.639Z')
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 78,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0',
+    join_date: ISODate('2024-07-07T01:16:19.639Z')
+  }
+]
+yousefLearning> db.inventory.find()
+[
+  {cknowledged: true,
+    _id: 1,d: null,
+    item: 'journal',
+    qty: 28,unt: 3,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 88,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 78,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.deleteMany({status:"A"})
+{ acknowledged: true, deletedCount: 2 }
+yousefLearning> db.inventory.find()
+[
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 78,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.delete({})
+TypeError: db.inventory.delete is not a function
+yousefLearning> db.inventory.deleteMany({})
+{ acknowledged: true, deletedCount: 1 }
+yousefLearning> db.inventory.find()
+
+yousefLearning> db.inventory.find()
+
+yousefLearning>

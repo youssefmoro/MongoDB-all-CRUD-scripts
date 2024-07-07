@@ -1,0 +1,205 @@
+Microsoft Windows [Version 10.0.19045.4529]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>mongsh
+'mongsh' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Windows\system32>mongosh
+Current Mongosh Log ID: 6689a59d6b794db114cc8987
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10
+Using MongoDB:          7.0.12
+Using Mongosh:          2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-07-05T00:32:03.586+03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin            40.00 KiB
+config           72.00 KiB
+local            72.00 KiB
+yousefLearning  144.00 KiB
+test> use yousefLearning
+switched to db yousefLearning
+yousefLearning> db.students.find()
+[tudents
+  {r
+    _id: 10,
+    name: 'YousefMohamedMoro',
+    schools: [ 'modern', 'portsaid', 'Abdelwahab' ]
+  },
+  {
+    _id: 50,
+    name: 'YousefMohamedMoro',
+    schools: [ 'modern', 'portsaid', 'Abdelwahab' ]
+  },
+  { _id: ObjectId('668772d090203f306dcc898a'), name: 'yousef' },
+  { _id: ObjectId('668772d090203f306dcc898b'), secondName: 'Moro' }
+]
+yousefLearning> db.inventory.insertMany([)
+Uncaught:
+SyntaxError: Unexpected token (1:25)
+
+> 1 | db.inventory.insertMany([)
+    |                          ^
+  2 |
+
+yousefLearning>   { "_id": 1, "item": "journal", "qty": 25, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" },
+...   { "id": 3, "item": "mat", "qty": 85, "size": { "h": 27.9, "w": 35.5, "uom": "cm" }, "status": "A" },
+...   { "id": 4, "item": "mousepad", "qty": 25, "size": { "h": 19, "w": 22.85, "uom": "cm" }, "status": "p" },
+...   { "id": 5, "item": "notebook", "qty": 50, "size": { "h": 8.5, "w": 11, "uom": "in" }, "status": "P" },
+...   { "_id": 6, "item": "paper", "qty": 100, "size": { "h": 8.5, "w": 11, "uom": "cm" }, "status": "P", "lastModified": ISODate("2020-08-15T20:10:20.230Z") },
+...   { "_id": 7, "item": "planner", "qty": 75, "size": { "h": 22.85, "w": 30, "uom": "cm" }, "status": "0" },
+...   { "id": 8, "item": "postcard", "qty": 45, "size": { "h": 10, "w": 15.25, "uom": "cm" }, "status": "A" },
+...   { "id": 9, "item": "sketchbook", "qty": 80, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" },
+...   { "id": 10, "item": "sketch pad", "qty": 95, "size": { "h": 22.85, "w": 30.5, "uom": "cm" }, "status": "A" }
+...
+... db.inventory.insertMany([
+Uncaught:
+SyntaxError: Missing semicolon. (1:9)
+
+
+yousefLearning> db.inventory.insert({ "_id": 1, "item": "journal", "qty": 25, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" })
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{ acknowledged: true, insertedIds: { '0': 1 } }
+yousefLearning> db.inventory.insertOne({ "_id": 1, "item": "journal", "qty": 25, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" })
+MongoServerError: E11000 duplicate key error collection: yousefLearning.inventory index: _id_ dup key: { _id: 1 }
+yousefLearning> db.inventory.insertMany([{ "id": 3, "item": "mat", "qty": 85, "size": { "h": 27.9, "w": 35.5, "uom": "cm" }, "status": "A" },])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6689a7386b794db114cc8988') }
+}
+yousefLearning>   { "id": 4, "item": "mousepad", "qty": 25, "size": { "h": 19, "w": 22.85, "uom": "cm" }, "status": "p" },
+...   { "id": 5, "item": "notebook", "qty": 50, "size": { "h": 8.5, "w": 11, "uom": "in" }, "status": "P" },
+...   { "_id": 6, "item": "paper", "qty": 100, "size": { "h": 8.5, "w": 11, "uom": "cm" }, "status": "P", "lastModified": ISODate("2020-08-15T20:10:20.230Z") },
+...   { "_id": 7, "item": "planner", "qty": 75, "size": { "h": 22.85, "w": 30, "uom": "cm" }, "status": "0" },
+...   { "id": 8, "item": "postcard", "qty": 45, "size": { "h": 10, "w": 15.25, "uom": "cm" }, "status": "A" },
+...   { "id": 9, "item": "sketchbook", "qty": 80, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" },
+...   { "id": 10, "item": "sketch pad", "qty": 95, "size": { "h": 22.85, "w": 30.5, "uom": "cm" }, "status": "A" }
+... db.inventory.find()
+Uncaught:
+SyntaxError: Missing semicolon. (1:8)
+
+> 1 |   { "id": 4, "item": "mousepad", "qty": 25, "size": { "h": 19, "w": 22.85, "uom": "cm" }, "status": "p" },
+    |         ^
+  2 |   { "id": 5, "item": "notebook", "qty": 50, "size": { "h": 8.5, "w": 11, "uom": "in" }, "status": "P" },
+  3 |   { "_id": 6, "item": "paper", "qty": 100, "size": { "h": 8.5, "w": 11, "uom": "cm" }, "status": "P", "lastModified": ISODate("2020-08-15T20:10:20.230Z") },
+  4 |   { "_id": 7, "item": "planner", "qty": 75, "size": { "h": 22.85, "w": 30, "uom": "cm" }, "status": "0" },
+
+yousefLearning> db.inventory.find({})
+[
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 25,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  }
+]
+yousefLearning> db.inventory.insertMany([{ "_id": 7, "item": "planner", "qty": 75, "size": { "h": 22.85, "w": 30, "uom": "cm" }, "status": "0" },])
+{ acknowledged: true, insertedIds: { '0': 7 } }
+yousefLearning>   { "id": 8, "item": "postcard", "qty": 45, "size": { "h": 10, "w": 15.25, "uom": "cm" }, "status": "A" },
+...   { "id": 9, "item": "sketchbook", "qty": 80, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" },
+... db.inventory.find({})
+Uncaught:
+SyntaxError: Missing semicolon. (1:8)
+
+> 1 |   { "id": 8, "item": "postcard", "qty": 45, "size": { "h": 10, "w": 15.25, "uom": "cm" }, "status": "A" },
+    |         ^
+  2 |   { "id": 9, "item": "sketchbook", "qty": 80, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" },
+  3 | db.inventory.find()
+  4 | db.inventory.find({})
+
+yousefLearning> { "id": 8, "item": "postcard", "qty": 45, "size": { "h": 10, "w": 15.25, "uom": "cm" }, "status": "A" }, { "id": 9, "item": "sketchbook", "qty": 80, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" }, db.inventory.find() db.inventory.find({})
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | { "id": 8, "item": "postcard", "qty": 45, "size": { "h": 10, "w": 15.25, "uom": "cm" }, "status": "A" }, { "id": 9, "item": "sketchbook", "qty": 80, "size": { "h": 14, "w": 21, "uom": "cm" }, "status": "A" }, db.inventory.find() db.inventory.find({})
+    |       ^
+  2 |
+
+yousefLearning>  db.inventory.find({})
+[
+  {
+    _id: 1,
+    item: 'journal',
+    qty: 25,
+    size: { h: 14, w: 21, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.find({item:"planner"})
+[
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' },
+    status: '0'
+  }
+]
+yousefLearning> db.inventory.find({item:{$ne:"planner"}},{_id:0,item:1,qty:1})
+[ { item: 'journal', qty: 25 }, { item: 'mat', qty: 85 } ]
+yousefLearning> db.inventory.find({item:"mat",qty:85})
+[
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    id: 3,
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' },
+    status: 'A'
+  }
+]
+yousefLearning> db.inventory.find({$or:[{item:"mat"},{qty:85}]},{_id:1,item:1,qty:1,size:1})
+[
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' }
+  }
+]
+yousefLearning> db.inventory.find({$or:[{item:"mat"},{qty:75}]},{_id:1,item:1,qty:1,size:1})
+[
+  {
+    _id: ObjectId('6689a7386b794db114cc8988'),
+    item: 'mat',
+    qty: 85,
+    size: { h: 27.9, w: 35.5, uom: 'cm' }
+  },
+  {
+    _id: 7,
+    item: 'planner',
+    qty: 75,
+    size: { h: 22.85, w: 30, uom: 'cm' }
+  }
+]
+yousefLearning>

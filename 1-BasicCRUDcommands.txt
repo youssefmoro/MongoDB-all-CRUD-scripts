@@ -1,0 +1,209 @@
+Microsoft Windows [Version 10.0.19045.4529]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>mongo
+'mongo' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Windows\system32>mongosh
+Current Mongosh Log ID: 668743d59a0ffd8523cc8987
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10
+Using MongoDB:          7.0.12
+Using Mongosh:          2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-07-05T00:32:03.586+03:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> mongodb
+ReferenceError: mongodb is not defined
+test> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   72.00 KiB
+test> use yousefLearning
+switched to db yousefLearning
+yousefLearning> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   72.00 KiB
+yousefLearning> use yousefLearning
+already on db yousefLearning
+yousefLearning> db.user.insertOne({})
+{
+  acknowledged: true,
+  insertedId: ObjectId('668744a39a0ffd8523cc8988')
+}
+yousefLearning> db.user.insertOne({id_emp:101,name:"Yousef",work:})
+Uncaught:
+SyntaxError: Unexpected token (1:49)
+
+> 1 | db.user.insertOne({id_emp:101,name:"Yousef",work:})
+    |                                                  ^
+  2 |
+
+yousefLearning> db.user.insertOne({id_emp:101,name:"Yousef",work:"JavaDev"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('668744e29a0ffd8523cc8989')
+}
+yousefLearning> db.user.find({})
+[
+  { _id: ObjectId('668744a39a0ffd8523cc8988') },
+  {
+    _id: ObjectId('668744e29a0ffd8523cc8989'),
+    id_emp: 101,
+    name: 'Yousef',
+    work: 'JavaDev'
+  }
+]
+yousefLearning> show collections
+user
+yousefLearning> use anotherUser
+switched to db anotherUser
+anotherUser> show collections
+
+anotherUser> show collections
+
+anotherUser> use yousefLearning
+switched to db yousefLearning
+yousefLearning> show collections
+user
+yousefLearning> db.student.insertOne({id:100,name:"hamada",year:5})
+{
+  acknowledged: true,
+  insertedId: ObjectId('668746589a0ffd8523cc898a')
+}
+yousefLearning> show collections
+student
+user
+yousefLearning> show dbs
+admin            40.00 KiB
+config           96.00 KiB
+local            72.00 KiB
+yousefLearning  112.00 KiB
+yousefLearning> db.user.find({})
+[
+  { _id: ObjectId('668744a39a0ffd8523cc8988') },
+  {
+    _id: ObjectId('668744e29a0ffd8523cc8989'),
+    id_emp: 101,
+    name: 'Yousef',
+    work: 'JavaDev'
+  }
+]
+yousefLearning> db.user.insertMany([{id_emp:106,name:"hahahaha",work:"labour"},{name:"ali"},{work:}])
+Uncaught:
+SyntaxError: Unexpected token (1:82)
+
+> 1 | db.user.insertMany([{id_emp:106,name:"hahahaha",work:"labour"},{name:"ali"},{work:}])
+    |                                                                                   ^
+  2 |
+
+yousefLearning> db.user.insertMany([{id_emp:106,name:"hahahaha",work:"labour"},{name:"ali"},{work:"scientist"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('668753fb9a0ffd8523cc898b'),
+    '1': ObjectId('668753fb9a0ffd8523cc898c'),
+    '2': ObjectId('668753fb9a0ffd8523cc898d')
+  }
+}
+yousefLearning> id.user.find()
+ReferenceError: id is not defined
+yousefLearning> id.user.find({})
+ReferenceError: id is not defined
+yousefLearning> db.user.find()
+[
+  { _id: ObjectId('668744a39a0ffd8523cc8988') },
+  {
+    _id: ObjectId('668744e29a0ffd8523cc8989'),
+    id_emp: 101,
+    name: 'Yousef',
+    work: 'JavaDev'
+  },
+  {
+    _id: ObjectId('668753fb9a0ffd8523cc898b'),
+    id_emp: 106,
+    name: 'hahahaha',
+    work: 'labour'
+  },
+  { _id: ObjectId('668753fb9a0ffd8523cc898c'), name: 'ali' },
+  { _id: ObjectId('668753fb9a0ffd8523cc898d'), work: 'scientist' }
+]
+yousefLearning> systeminfo >D:\learning_phase\MongoDB\scriptOneBasicCRUD
+Uncaught:
+SyntaxError: Missing semicolon. (1:13)
+
+> 1 | systeminfo >D:\learning_phase\MongoDB\scriptOneBasicCRUD
+    |              ^
+  2 |
+
+yousefLearning> systeminfo >D:;\learning_phase;\MongoDB;\scriptOneBasicCRUD
+Uncaught:
+SyntaxError: Missing semicolon. (1:13)
+
+> 1 | systeminfo >D:;\learning_phase;\MongoDB;\scriptOneBasicCRUD
+    |              ^
+  2 |
+
+yousefLearning> systeminfo >D:\\learning_phase\\MongoDB\\scriptOneBasicCRUD
+Uncaught:
+SyntaxError: Missing semicolon. (1:13)
+
+> 1 | systeminfo >D:\\learning_phase\\MongoDB\\scriptOneBasicCRUD
+    |              ^
+  2 |
+
+yousefLearning> systeminfo >D:\\learning_phase\\MongoDB\\scriptOneBasicCRUD.txt
+Uncaught:
+SyntaxError: Missing semicolon. (1:13)
+
+> 1 | systeminfo >D:\\learning_phase\\MongoDB\\scriptOneBasicCRUD.txt
+    |              ^
+  2 |
+
+yousefLearning> systeminfo >> D:\\learning_phase\\MongoDB\\scriptOneBasicCRUD.txt
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | systeminfo >> D:\\learning_phase\\MongoDB\\scriptOneBasicCRUD.txt
+    |                ^
+  2 |
+
+yousefLearning> systeminfo >> D:\learning_phase\MongoDB\scriptOneBasicCRUD.txt
+Uncaught:
+SyntaxError: Missing semicolon. (1:15)
+
+> 1 | systeminfo >> D:\learning_phase\MongoDB\scriptOneBasicCRUD.txt
+    |                ^
+  2 |
+
+yousefLearning> systeminfo; > D:\learning_phase\MongoDB\scriptOneBasicCRUD.txt
+Uncaught:
+SyntaxError: Unexpected token (1:12)
+
+> 1 | systeminfo; > D:\learning_phase\MongoDB\scriptOneBasicCRUD.txt
+    |             ^
+  2 |
+
+yousefLearning> systeminfo; >> D:\learning_phase\MongoDB\scriptOneBasicCRUD.txt
+Uncaught:
+SyntaxError: Unexpected token (1:12)
+
+> 1 | systeminfo; >> D:\learning_phase\MongoDB\scriptOneBasicCRUD.txt
+    |             ^
+  2 |
+
+yousefLearning> doskey /history > D:\learning_phase\MongoDB\commandHistory.txt
+Uncaught:
+SyntaxError: Missing semicolon. (1:19)
+
+> 1 | doskey /history > D:\learning_phase\MongoDB\commandHistory.txt
+    |                    ^
+  2 |
+
+yousefLearning>s
